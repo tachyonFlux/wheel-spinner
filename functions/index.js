@@ -16,6 +16,7 @@ limitations under the License.
 const admin = require('firebase-admin');
 admin.initializeApp();
 
+exports.movieList = require('./movieList.js').func();
 exports.createSharedWheel2 = require('./createSharedWheel2.js').func();
 exports.getSharedWheel2 = require('./getSharedWheel2.js').func();
 exports.logSharedWheelRead = require('./logSharedWheelRead.js').func();

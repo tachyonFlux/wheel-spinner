@@ -161,7 +161,8 @@
   "textboxbuttons": {
     "Add image": "Add image",
     "Shuffle": "Shuffle",
-    "Sort": "Sort"
+    "Sort": "Sort",
+    "Load from Clumsy Movie Bot": "Load from Clumsy Movie Bot"
   },
   "toolbar": {
     "Add your language": "Add your language",

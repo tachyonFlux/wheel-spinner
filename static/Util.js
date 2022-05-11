@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import '@babel/polyfill';
+import * as ServerFunctions from './ServerFunctions.js';
 
 let getHtmlAsTextCache = {};
 
@@ -59,8 +60,8 @@ export function arraysEqual(a, b) {
 }
 
 export function boxFits(a, r, b, w, h) {
-  let d = Math.sqrt(Math.pow(r,2)-Math.pow(h/2,2)) -
-          Math.max(h*Math.cos(a)/(2*Math.sin(a)), b);
+  let d = Math.sqrt(Math.pow(r, 2) - Math.pow(h / 2, 2)) -
+    Math.max(h * Math.cos(a) / (2 * Math.sin(a)), b);
   return d >= w;
 }
 
@@ -77,7 +78,7 @@ export function extractDisplayText(entry, shorten) {
     if (shorten) {
       const MAX_LENGTH = 18;
       if (displayText.length > MAX_LENGTH) {
-        displayText = displayText.substring(0, MAX_LENGTH-1) + '…';
+        displayText = displayText.substring(0, MAX_LENGTH - 1) + '…';
       }
     }
     // Add font-proportional space between name and edges of wheel.
@@ -108,8 +109,12 @@ export function shuffleArray(inputArray) {
   return array;
 }
 
+export async function getMovieList() {
+  return await ServerFunctions.getMovieList();
+}
+
 export function getOccurencesInArray(array, entry) {
-  return array.reduce(function(accumulator, currentValue) {
+  return array.reduce(function (accumulator, currentValue) {
     return accumulator + (currentValue == entry ? 1 : 0);
   }, 0)
 }
@@ -157,7 +162,7 @@ export function getAddedEntries(oldEntries, newEntries) {
 }
 
 export function initTracking() {
-  window.onerror = function(message, source, lineno, colno, error) {
+  window.onerror = function (message, source, lineno, colno, error) {
     try {
       if (error) message = error.toString();
       trackEvent('window.onerror', message, navigator.userAgent);
@@ -181,11 +186,11 @@ export function trackException(exception, extraData) {
 
 export function escapeHtml(unsafe) {
   return unsafe
-       .replace(/&/g, "&amp;")
-       .replace(/</g, "&lt;")
-       .replace(/>/g, "&gt;")
-       .replace(/"/g, "&quot;")
-       .replace(/'/g, "&#039;");
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 export function colorIsWhite(color) {
@@ -206,9 +211,9 @@ export function getElementsByClassName(classNames) {
 export function updateColorStyles(darkMode, darkModeColor, pageColor) {
   const sheet = [...document.styleSheets].find(
     sheet => sheet.href &&
-    (sheet.href.includes('index.css') || sheet.href.includes('admin.css'))
+      (sheet.href.includes('index.css') || sheet.href.includes('admin.css'))
   );
-  const rule = [...sheet.rules].find(rule => rule.selectorText=='.can-go-dark');
+  const rule = [...sheet.rules].find(rule => rule.selectorText == '.can-go-dark');
   if (darkMode) {
     rule.style.color = '#fff';
     rule.style.backgroundColor = darkModeColor;

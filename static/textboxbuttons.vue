@@ -26,49 +26,58 @@ limitations under the License.
         <i class="far fa-image"></i>&nbsp;{{ $t('textboxbuttons.Add image') }}
       </a>
     </b-upload>
+    <b-button size="is-small" type="is-light" :disabled="buttonsDisabled" @click="getMovieList">
+      <i class="fab fa-discord"></i>&nbsp;{{ $t('textboxbuttons.Load from Clumsy Movie Bot') }}
+    </b-button>
   </span>
 </template>
 
 <script>
-  import * as Util from './Util.js';
-  import * as ImageUtil from './ImageUtil.js';
+import * as Util from './Util.js';
+import * as ImageUtil from './ImageUtil.js';
 
-  export default {
-    data() {
-      return {uploadedImage: []}
-    },
-    watch: {
-      uploadedImage: function(files) {
-        if (files.length == 0) return;
-        Util.trackEvent('Wheel', 'UploadPieSliceImage', files.length);
-        for (const file of files) {
-          const reader = new FileReader();
-          const self = this;
-          reader.onload = async function(e) {
-            const dataUri = await ImageUtil.optimizeSliceImage(e.target.result);
-            const imageTag = `<img src="${dataUri}" style="height:25px" style="font-size: 1rem;">`;
-            self.$store.commit('appendNames', [imageTag]);
-          }
-          reader.readAsDataURL(file);
+export default {
+  data() {
+    return { uploadedImage: [] }
+  },
+  watch: {
+    uploadedImage: function (files) {
+      if (files.length == 0) return;
+      Util.trackEvent('Wheel', 'UploadPieSliceImage', files.length);
+      for (const file of files) {
+        const reader = new FileReader();
+        const self = this;
+        reader.onload = async function (e) {
+          const dataUri = await ImageUtil.optimizeSliceImage(e.target.result);
+          const imageTag = `<img src="${dataUri}" style="height:25px" style="font-size: 1rem;">`;
+          self.$store.commit('appendNames', [imageTag]);
         }
-        this.uploadedImage = [];
+        reader.readAsDataURL(file);
       }
-    },
-    computed: {
-      buttonsDisabled() {
-        const appStatus = this.$store.state.appStatus;
-        return appStatus.sheetLinked || appStatus.wheelSpinning;
-      }
-    },
-    methods: {
-      shuffle() {
-        Util.trackEvent('Wheel', 'ShuffleNames', '');
-        this.$store.commit('shuffleNames');
-      },
-      sort() {
-        Util.trackEvent('Wheel', 'SortNames', '');
-        this.$store.commit('sortNames');
-      },
+      this.uploadedImage = [];
     }
+  },
+  computed: {
+    buttonsDisabled() {
+      const appStatus = this.$store.state.appStatus;
+      return appStatus.sheetLinked || appStatus.wheelSpinning;
+    }
+  },
+  methods: {
+    shuffle() {
+      Util.trackEvent('Wheel', 'ShuffleNames', '');
+      this.$store.commit('shuffleNames');
+    },
+    sort() {
+      Util.trackEvent('Wheel', 'SortNames', '');
+      this.$store.commit('sortNames');
+    },
+    async getMovieList() {
+      var namesList = await Util.getMovieList().then(value => { return value["names"] });
+      if (namesList.length > 1) {
+        this.$store.commit('setNames', namesList);
+      }
+    },
   }
+}
 </script>

@@ -52,6 +52,17 @@ export async function getSharedWheel(path) {
   return respObj.wheelConfig;
 }
 
+export async function getMovieList() {
+  const url = process.env.FUNCTION_PREFIX + '/movieList/';
+  const response = await fetch(url, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {'Content-Type': 'application/json'}
+  });
+  const respObj = await response.json();
+  return respObj;
+}
+
 export async function fetchSocialMediaUsers(searchTerm) {
   const url = process.env.FUNCTION_PREFIX +
     `/getTwitterUserNames2/${encodeURIComponent(searchTerm)}`;
