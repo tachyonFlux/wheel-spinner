@@ -35,10 +35,10 @@ export default class WheelPainter {
     const drawShadows = Util.colorIsWhite(backgroundColor);
     this.drawBackgroundColor(context, backgroundColor);
     this.drawWheelShadow(context, wheelRadius, drawShadows);
-    if (names.includes('')) this.drawHat(context, wheelRadius, hubRadius);
     this.drawWheel(context, wheelRadius, angle, names, colors, hubRadius);
     this.drawPointer(context, wheelRadius, drawShadows);
     this.drawHub(context, angle, centerImage, hubRadius);
+    if (names.includes('')) this.drawHat(context, wheelRadius, hubRadius);
   }
 
   getHubRadius(wheelRadius, hubSize) {
@@ -85,12 +85,12 @@ export default class WheelPainter {
   }
 
   drawHat(context, wheelRadius, hubRadius) {
-    const image = this.imageCache.getImage('images/hat-with-names.png');
-    const scale = (wheelRadius - hubRadius) / image.width;
-    const x = context.canvas.width / 2 - wheelRadius;
+    const image = this.imageCache.getImage('images/cover.png');
+    const scale = 1.15 * (wheelRadius - hubRadius) / image.width;
+    const x = context.canvas.width / 2 - (1.06 * wheelRadius);
     const height = image.height * scale;
     const y = (context.canvas.height - height) / 2;
-    const width = wheelRadius - hubRadius;
+    const width = image.width * scale;
     context.drawImage(image, x, y, width, height);
   }
 

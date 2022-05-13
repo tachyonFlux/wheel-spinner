@@ -37,7 +37,8 @@ export default class DisplayNamePicker {
     }
     else {
       this.allNamesFitOnWheel = false;
-      this.filledSlices = Math.round(maxSlices * 0.66);
+      var radiansPerSlice = 2 * Math.PI / maxSlices;
+      this.filledSlices = maxSlices - Math.ceil((Math.PI / 6) / radiansPerSlice);
       this.hat.empty();
       textboxNames.forEach(name => {
         if (!this.namesOnWheel.includes(name)) {

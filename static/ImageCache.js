@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import './images/none.png';
+import './images/hat-with-names.png';
+import './images/cover.png';
 import './third_party/publicdomainvectors/camera.png';
 import './third_party/publicdomainvectors/cat.png';
 import './third_party/publicdomainvectors/dog.png';

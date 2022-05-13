@@ -88,7 +88,7 @@ limitations under the License.
   export default {
     data() {
       return {
-        toolbarBrand: window.location.host,
+        toolbarBrand: "The Clumsy Movies Wheel",
         browserIsIEOrOldEdge: Util.browserIsIEOrOldEdge(navigator.userAgent),
         locale: this.$i18n.locale, locales: Locales.getNamesForAll()
       };

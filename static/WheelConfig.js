@@ -30,7 +30,7 @@ export default function WheelConfig(winnerMessage) {
     {color: '#000000', enabled: false},
     {color: '#000000', enabled: false},
   ];
-  this.pageBackgroundColor = '#FFFFFF';
+  this.pageBackgroundColor = '#A3A3A3';
   this.pictureType = 'none';
   this.galleryPicture = 'images/none.png';
   this.customPictureName = '';
@@ -38,7 +38,7 @@ export default function WheelConfig(winnerMessage) {
   this.allowDuplicates = true;
   this.duringSpinSound = 'ticking-sound';
   this.afterSpinSound = 'applause-sound';
-  this.maxNames = 500;
+  this.maxNames = 50;
   this.spinTime = 10;
   this.playCheers = true;
   this.launchConfetti = true;
