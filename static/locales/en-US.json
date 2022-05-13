@@ -15,7 +15,7 @@
     "authError": "That didn't work. Please try again and you will be prompted to sign in. If it still doesn't work, try these things: refresh the page with Ctrl+Shift+R (Windows, Linux, Chromebook) or Command+Shift+R (Mac), turn off your ad-blocker, turn off your anti-virus software. <br><br>({error})"
   },
   "appInfo": {
-    "The entries you make": "The entries you make above will be displayed on the wheel. When you click the wheel, it spins and picks a random winner. You can customize the appearance and behavior of the wheel, and save and share wheels with others.",
+    "The entries you make": "",
     "Did you know": "Did you know that you can change the color, sound, and behavior of the wheel by clicking Customize at the top of this page?",
     "Dinner wheel": "Dinner wheel",
     "Examples:": "Examples:",

@@ -32,6 +32,7 @@ export default function Wheel() {
 
   this.setNames = function(names, maxSlices, allowDuplicates) {
     if (this.state.editAllowed()) {
+      this.namePicker.setNames([], 0, allowDuplicates);
       this.namePicker.setNames(names, maxSlices, allowDuplicates);
       this.wheelPainter.refresh();
     }
