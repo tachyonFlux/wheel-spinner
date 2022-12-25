@@ -62,10 +62,9 @@ export async function getMovieList() {
   const response = await fetch(url, {
     method: 'GET',
     mode: 'cors',
-    headers: {'Content-Type': 'application/json'}
   });
   const respObj = await response.json();
-  return JSON.parse(respObj);
+  return respObj;
 }
  
 export async function getSharedWheels(idToken) {
