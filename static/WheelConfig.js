@@ -18,17 +18,17 @@ import * as Util from './Util.js';
 export default class WheelConfig {
 
   constructor(winnerMessage) {
-    this.title = '';
+    this.title = 'The Clumsy Movies Wheel';
     this.description = '';
     this.entries = [
-      {text: 'Ali'},
-      {text: 'Beatriz'},
-      {text: 'Charles'},
-      {text: 'Diya'},
-      {text: 'Eric'},
-      {text: 'Fatima'},
-      {text: 'Gabriel'},
-      {text: 'Hanna'},
+      {text: 'Dune'},
+      {text: 'The Room'},
+      {text: 'The Miami Connection'},
+      {text: 'Fateful Findings'},
+      {text: 'The Adventures of Buckaroo Banzai: Across the Eighth Dimension'},
+      {text: 'Big Trouble in Little China'},
+      {text: 'Mazes and Monsters'},
+      {text: 'Birdemic: Shock and Terror'},
     ];
     this.colorSettings = [
       {color: '#3369E8', enabled: true},
@@ -38,7 +38,7 @@ export default class WheelConfig {
       {color: '#000000', enabled: false},
       {color: '#000000', enabled: false},
     ];
-    this.pageBackgroundColor = '#FFFFFF';
+    this.pageBackgroundColor = '#A3A3A3';
     this.type = 'color';
     this.pictureType = 'none';
     this.coverImageType = '';
@@ -53,7 +53,7 @@ export default class WheelConfig {
     this.duringSpinSoundVolume = 100;
     this.afterSpinSound = 'applause-sound';
     this.afterSpinSoundVolume = 100;
-    this.maxNames = 500;
+    this.maxNames = 50;
     this.spinTime = 10;
     this.playCheers = true;
     this.launchConfetti = true;

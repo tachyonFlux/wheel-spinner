@@ -65,7 +65,7 @@ export async function getMovieList() {
     headers: {'Content-Type': 'application/json'}
   });
   const respObj = await response.json();
-  return respObj;
+  return JSON.parse(respObj);
 }
  
 export async function getSharedWheels(idToken) {

@@ -118,7 +118,7 @@ limitations under the License.
   export default {
     data() {
       return {
-        toolbarBrand: "The Clumsy Movies Wheel",
+        toolbarBrand: "wheel-spinner",
         browserIsIEOrOldEdge: Util.browserIsIEOrOldEdge(navigator.userAgent),
         locales: Locales.getNamesForAll(Util.platformSupportsFlags(navigator))
       };
