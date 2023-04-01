@@ -116,16 +116,10 @@ export default {
       this.$store.commit('sortEntries');
     },
     async getMovieList() {
-      Util.getMovieList().then(value => {
-        if (value["names"].length > 1) {
-          var names = value["names"]
-          var entries = [];
-          for (const element of names) {
-            entries.push({text: element})
-          }
-          this.$store.commit('setEntries', entries);
-        }
-      })
+      var wheelReloadMovies = Util.getRandomInt(4, 10);
+      this.$store.commit('setWheelReloadMovies', wheelReloadMovies);
+      var entries = await Util.getMovieList()
+      this.$store.commit('setEntries', entries);
     },
   }
 }

@@ -25,7 +25,9 @@ export default {
     wheelIsBusy: false,
     winners: [],
     path: '',
-    copyable: false
+    copyable: false,
+    spinCount: 0,
+    reloadMovies: 0
   },
   getters: {
     wheelType: state => state.wheelConfig.type,
@@ -40,6 +42,8 @@ export default {
     wheelIsCopyable: state => state.copyable,
     wheelIsAdvanced: state => state.wheelConfig.isAdvanced,
     wheelTitle: state => state.wheelConfig.title,
+    wheelSpinCount: state => state.spinCount,
+    wheelReloadMovies: state => state.reloadMovies
   },
   mutations: {
     setWheelConfig(state, newWheelConfig) {
@@ -212,6 +216,12 @@ export default {
     },
     setPath(state, path) {
       state.path = path;
+    },
+    setWheelSpinCount(state, count) {
+      state.wheelSpinCount = count;
+    },
+    setWheelReloadMovies(state, count) {
+      state.wheelReloadMovies = count;
     },
     setUnshared(state) {
       state.path = '';

@@ -153,7 +153,16 @@ export function shuffleArray(inputArray) {
 }
 
 export async function getMovieList() {
-  return await ServerFunctions.getMovieList();
+  ServerFunctions.getMovieList().then(value => {
+    if (value["names"].length > 1) {
+      var names = value["names"]
+      var entries = [];
+      for (const element of names) {
+        entries.push({text: element})
+      }
+      return entries;
+    }
+  })
 }
 
 export function getOccurences(allTexts, text) {
