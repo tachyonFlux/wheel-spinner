@@ -118,7 +118,7 @@ export default {
     async getMovieList() {
       var wheelReloadMovies = Util.getRandomInt(4, 10);
       this.$store.commit('setWheelReloadMovies', wheelReloadMovies);
-      var entries = await Util.getMovieList()
+      var entries = await Util.getMovieList();
       this.$store.commit('setEntries', entries);
     },
   }
