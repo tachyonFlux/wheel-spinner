@@ -17,10 +17,7 @@ limitations under the License.
   <div class="container" style="text-align: center">
     <canvas id="wheelCanvas" style="width:100%" @click="spin()" width="700" height="700">
     </canvas>
-    <wheelOverlayText
-      v-if="displayOverlayText"
-      v-on:click="spin()"
-    />
+    <wheelOverlayText v-if="displayOverlayText" v-on:click="spin()" />
   </div>
 </template>
 
@@ -112,6 +109,8 @@ export default {
         var entries = await Util.getMovieList()
         this.$store.commit('setEntries', entries);
         this.$store.commit('setWheelReloadMovies', 9999);
+        Util.trackEvent('Wheel', 'ShuffleEntries', '');
+        this.$store.commit('shuffleEntries');
       }
     },
     trackInGoogleAnalytics() {
